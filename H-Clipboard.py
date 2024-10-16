@@ -34,7 +34,7 @@ class ClipboardHistoryApp:
         self.root.bind('<Control-v>', self.paste_image)
 
         # Canvas pour afficher des images (miniatures)
-        self.image_preview = tk.Label(self.root)
+        self.image_preview = tk.Label(self.root, width=100, height=100)  # Taille fixe
         self.image_preview.pack(pady=10)
 
         # Démarrer la vérification du presse-papier
@@ -82,12 +82,13 @@ class ClipboardHistoryApp:
         self.image_history.append(temp_file.name)
         self.image_listbox.insert(tk.END, f"[Image]")
 
-        thumbnail = image.copy()
-        thumbnail.thumbnail((100, 100))
-        self.display_image(thumbnail)
+        self.display_image(image)  # Afficher l'image en taille fixe
 
     def display_image(self, image):
-        self.thumbnail = ImageTk.PhotoImage(image)
+        # Redimensionner l'image pour la prévisualisation
+        thumbnail = image.copy()
+        thumbnail.thumbnail((150, 150))  # Taille fixe pour la prévisualisation
+        self.thumbnail = ImageTk.PhotoImage(thumbnail)
         self.image_preview.config(image=self.thumbnail)
 
     def handle_text_selection(self, event):
