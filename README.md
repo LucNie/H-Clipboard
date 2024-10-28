@@ -17,7 +17,7 @@ Avant d'exécuter l'application, assurez-vous d'avoir installé les bibliothèqu
 python 3.12.x (des versions antérieures peuvent fonctionner, mais n'ont pas été testées)
 
 ```bash
-python -venv venv
+python -m venv venv
 venv\Scripts\activate # Windows
 pip install -r requirements.txt
 ```
